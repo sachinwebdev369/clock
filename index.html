@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            height: 100vh;
+            width: 100vw;
+            background-color: #eeedbd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .box {
+            background-color: rgb(54, 80, 3);
+            width: 90vw;
+            max-width: 500px;
+            height: 90vw;
+            max-height: 500px;
+            border-radius: 50%;
+            position: relative;
+    padding: 6px;
+            overflow: hidden;
+        }
+
+        .clock {
+            background-color: rgb(238 248 218 / 77%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+        }
+
+        .box .clock-hour-hand-wrapper {
+            position: absolute;
+            width: 56%;
+            height: 56%;
+            border-radius: inherit;
+        }
+
+        .box .clock-minute-hand-wrapper {
+            width: 70%;
+            height: 70%;
+            border-radius: inherit;
+            position: absolute;
+        }
+
+        .box .clock-second-hand-wrapper {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border-radius: inherit;
+        }
+
+
+        .arrow {
+            position: absolute;
+    top: 12.5%;
+    left: 13.8%;
+    rotate: 135deg;
+    font-weight: 700;
+    font-size: 1.6em;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+        }
+     
+        .hand {
+            position: absolute ;
+            top: 50%;
+            left: 0;
+            /* rotate: 30deg; */
+            transform: rotate(45deg);
+            transform-origin: bottom;
+            height: 4px;
+            width: 100%;
+    z-index: 50;
+
+        }
+        .minute-hand {
+            background: linear-gradient(90deg, rgb(18, 18, 19) 50%, transparent 50%);
+            
+        }
+        .second-hand {
+            background: linear-gradient(90deg, rgb(230, 17, 17) 50%, transparent 50%);
+
+        }
+        .hour-hand {
+            background: linear-gradient(90deg, rgb(13, 13, 13) 50%, transparent 50%);
+            height: 6px;
+
+        }
+        .clock-minute-hand-wrapper .arrow {
+            color: rgb(18, 18, 19);
+        }
+        .clock-second-hand-wrapper .arrow {
+            color: rgb(230, 17, 17);
+
+        }
+        .clock-hour-hand-wrapper .arrow {
+            color: rgb(13, 13, 13);
+
+        }
+        
+        .num {
+            position: absolute;
+            padding: 10px 0;
+            font-size: calc(1.2em + 1.4vw);
+            /* font-size: 1.8em; */
+            transform-origin: center;
+            transform: rotate(calc(30deg * var(--i)));
+            width: auto;
+            height: 100%;
+            font-family: serif;
+            font-weight: 600;
+        }
+
+        .num span {
+            display: inline-block;
+            transform: rotate(calc(-30deg * var(--i)));
+        }
+        .name {
+            position: absolute;
+    top: 30px;
+    left: 25px;
+    font-size: calc(0.8em + 1.5vw);
+    font-weight: 600;
+    color: rgba(11, 93, 11, 0.564);
+    letter-spacing: 5.5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-transform: uppercase;       
+ }
+
+.point {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(2px + 1.5vw);
+    height: calc(2px + 1.5vw);
+    background-color: rgb(16, 21, 16);
+    border-radius: 50%;
+    z-index: 0;
+}
+.point::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: inherit;
+    content: '';
+    width: calc(1px + 1vw);
+    height: calc(1px + 1vw);
+    background-color: rgb(16, 21, 16);
+    z-index: 100;
+}
+
+ @media (max-width: 407px) {
+            .arrow {
+                /* top: 11%; */
+                /* left: 13.5%; */
+                font-size: 1em ;
+            }
+            .hand {
+                height: 2px;
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="name">Sachin Kumar</div>
+        <div class="box">
+            <div class="clock">
+
+                <div class="clock-minute-hand-wrapper">
+                    <div class="minute-hand hand"></div>
+                    <div class="arrow">V</div>
+                </div>
+                <div class="clock-hour-hand-wrapper">
+                    <div class="hour-hand hand"></div>
+                    <div class="arrow">V</div>
+                </div>
+               
+                <div class="clock-second-hand-wrapper">
+                    <div class="second-hand hand"></div>
+                    <div class="arrow">V</div>
+                </div>
+                <div class="point"></div>
+
+                <div class="num num-1" style="--i:1"><span style="--i:1">1</span></div>
+                <div class="num num-2" style="--i:2"><span style="--i:2">2</span></div>
+                <div class="num num-3" style="--i:3"><span style="--i:3">3</span></div>
+                <div class="num num-4" style="--i:4"><span style="--i:4">4</span></div>
+                <div class="num num-5" style="--i:5"><span style="--i:5">5</span></div>
+                <div class="num num-6" style="--i:6"><span style="--i:6">6</span></div>
+                <div class="num num-7" style="--i:7"><span style="--i:7">7</span></div>
+                <div class="num num-8" style="--i:8"><span style="--i:8">8</span></div>
+                <div class="num num-9" style="--i:9"><span style="--i:9">9</span></div>
+                <div class="num num-10" style="--i:10"><span style="--i:10">10</span></div>
+                <div class="num num-11" style="--i:11"><span style="--i:11">11</span></div>
+                <div class="num num-12" style="--i:12"><span style="--i:12">12</span></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+let hourHand = document.querySelector(".clock-hour-hand-wrapper")
+let minuteHand = document.querySelector(".clock-minute-hand-wrapper")
+let secondHand = document.querySelector(".clock-second-hand-wrapper")
+
+let hour, second, minute ;
+let errorDeg = 45;
+
+const updateClock = () => {
+    const cTime = new Date()
+    second = errorDeg + cTime.getSeconds() * 6
+    minute = errorDeg + cTime.getMinutes() * 6
+    hour = errorDeg + cTime.getHours() * 30 + Math.round(minute/12)
+    // console.log(cTime.getHours())
+
+    secondHand.style.transform = `rotate(${second}deg)`;
+    minuteHand.style.transform = `rotate(${minute}deg)`;
+    hourHand.style.transform = `rotate(${hour}deg)`;
+
+}
+
+setInterval(() => {
+    updateClock()
+}, 1000);
+// updateClock()
+    </script>
+</body>
+
+</html>
